@@ -56,8 +56,8 @@ public class DayWorkRepository : IDayWorkRepository
     {
         using var connection = _context.CreateConnection();
         var sqlStr = """
-            INSERT INTO DayWork (日期 ,開始時間, 主要分類, 次要分類, 備註, 花費時間)
-            VALUES (@日期 ,@開始時間, @主要分類, @次要分類, @備註, @花費時間)
+            INSERT INTO DayWork (日期 ,開始時間, 主要分類, 次要分類, 備註, 花費時間, 起始結束)
+            VALUES (@日期 ,@開始時間, @主要分類, @次要分類, @備註, @花費時間, @起始結束)
         """;
         await connection.ExecuteAsync(sqlStr, workDayInfo);
     }
@@ -72,7 +72,8 @@ public class DayWorkRepository : IDayWorkRepository
                 主要分類 = @主要分類,
                 次要分類 = @次要分類,
                 備註 = @備註,
-                花費時間 = @花費時間
+                花費時間 = @花費時間,
+                起始結束 = @起始結束
             WHERE id = @id
         """;
         await connection.ExecuteAsync(sqlStr, workDayInfo);

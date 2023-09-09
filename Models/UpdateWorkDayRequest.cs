@@ -18,4 +18,6 @@ public class UpdateWorkDayRequest
     public string? 備註 { get; set; }
 
     public int? 花費時間 { get; set; }
+
+    public string? 起始結束 { get; set; }
 }

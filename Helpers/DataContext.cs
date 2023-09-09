@@ -35,7 +35,8 @@ public class DataContext
                     主要分類 INTEGER,
                     次要分類 INTEGER,
                     備註 TEXT,
-                    花費時間 INTEGER
+                    花費時間 INTEGER,
+                    起始結束 TEXT
                 );
             """;
             await connection.ExecuteAsync(sql);

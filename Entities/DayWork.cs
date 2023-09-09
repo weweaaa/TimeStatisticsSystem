@@ -25,4 +25,7 @@ public class DayWork
 
     /// <summary> 花費時間 (分鐘) </summary>
     public int 花費時間 { get; set; }
+
+    /// <summary> 起始結束 [Start、End、NULL] </summary>
+    public string? 起始結束 { get; set; }
 }

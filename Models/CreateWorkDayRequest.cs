@@ -25,4 +25,6 @@ public class CreateWorkDayRequest
 
     [Required]
     public int 花費時間 { get; set; }
+
+    public string? 起始結束 { get; set; }
 }

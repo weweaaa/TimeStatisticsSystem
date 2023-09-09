@@ -58,7 +58,8 @@ public class WorkInfoService : IWorkInfoService
             主要分類 = 主要分類,
             次要分類 = 次要分類,
             備註 = model.備註,
-            花費時間 = model.花費時間
+            花費時間 = model.花費時間,
+            起始結束 = model.起始結束
         };
 
         await _dayWorkRepository.Create(dayWork);
@@ -110,6 +111,9 @@ public class WorkInfoService : IWorkInfoService
         {
             dayWork.花費時間 = (int)model.花費時間;
         }
+
+        // 起始結束 可為 NULL
+        dayWork.起始結束 = model.起始結束;
 
         await _dayWorkRepository.Update(dayWork);
     }
