@@ -9,6 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddSingleton<DataContext>();
     builder.Services.AddControllersWithViews();
 
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen();
+
     // configure DI for application services
     builder.Services.AddScoped<IDayWorkRepository, DayWorkRepository>();
     builder.Services.AddScoped<IWorkInfoService, WorkInfoService>();
@@ -28,9 +31,15 @@ if (!app.Environment.IsDevelopment())
 {
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
+    app.UseHttpsRedirection();
+    
+} else {
+    // app.UseDeveloperExceptionPage();
+    app.UseSwagger();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TimeStatisticsSystem v1"));
+    app.UseCors();
 }
 
-app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 

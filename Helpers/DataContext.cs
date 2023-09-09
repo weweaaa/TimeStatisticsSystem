@@ -29,7 +29,7 @@ public class DataContext
             var sql = """
                 CREATE TABLE IF NOT EXISTS 
                 DayWork (
-                    ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
                     日期 TEXT,
                     開始時間 TEXT,
                     主要分類 INTEGER,

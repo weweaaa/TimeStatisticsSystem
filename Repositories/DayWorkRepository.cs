@@ -37,7 +37,7 @@ public class DayWorkRepository : IDayWorkRepository
         using var connection = _context.CreateConnection();
         var sqlStr = """
             SELECT * FROM DayWork 
-            WHERE ID = @ID
+            WHERE id = @id
         """;
         return await connection.QuerySingleOrDefaultAsync<DayWork>(sqlStr, new { id });
     }
@@ -52,17 +52,17 @@ public class DayWorkRepository : IDayWorkRepository
         return await connection.QuerySingleOrDefaultAsync<DayWork>(sqlStr, new { 主要分類 });
     }
 
-    public async Task Create(DayWork user)
+    public async Task Create(DayWork workDayInfo)
     {
         using var connection = _context.CreateConnection();
         var sqlStr = """
             INSERT INTO DayWork (日期 ,開始時間, 主要分類, 次要分類, 備註, 花費時間)
             VALUES (@日期 ,@開始時間, @主要分類, @次要分類, @備註, @花費時間)
         """;
-        await connection.ExecuteAsync(sqlStr, user);
+        await connection.ExecuteAsync(sqlStr, workDayInfo);
     }
 
-    public async Task Update(DayWork user)
+    public async Task Update(DayWork workDayInfo)
     {
         using var connection = _context.CreateConnection();
         var sqlStr = """
@@ -73,9 +73,9 @@ public class DayWorkRepository : IDayWorkRepository
                 次要分類 = @次要分類,
                 備註 = @備註,
                 花費時間 = @花費時間
-            WHERE ID = @ID
+            WHERE id = @id
         """;
-        await connection.ExecuteAsync(sqlStr, user);
+        await connection.ExecuteAsync(sqlStr, workDayInfo);
     }
 
     public async Task Delete(int id)
@@ -83,7 +83,7 @@ public class DayWorkRepository : IDayWorkRepository
         using var connection = _context.CreateConnection();
         var sqlStr = """
             DELETE FROM DayWork 
-            WHERE ID = @ID
+            WHERE id = @id
         """;
         await connection.ExecuteAsync(sqlStr, new { id });
     }

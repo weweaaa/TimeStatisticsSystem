@@ -6,7 +6,7 @@ namespace TimeStatisticsSystem.Entities;
 public class DayWork
 {
     /// <summary> ID </summary>
-    public int ID { get; set; }
+    public int id { get; set; }
 
     /// <summary> 日期 </summary>
     public required string 日期 { get; set; } 

@@ -41,12 +41,12 @@ public class WorkInfoService : IWorkInfoService
 
     public async Task Create(CreateWorkDayRequest model)
     {
-        if (Enum.TryParse(model.主要分類, out MainCategory 主要分類))
+        if (!Enum.TryParse(model.主要分類, out MainCategory 主要分類))
         {
             throw new AppException("主要分類 is not valid");
         }
 
-        if (Enum.TryParse(model.次要分類, out SubCategory 次要分類))
+        if (!Enum.TryParse(model.次要分類, out SubCategory 次要分類))
         {
             throw new AppException("次要分類 is not valid");
         }
@@ -83,7 +83,7 @@ public class WorkInfoService : IWorkInfoService
 
         if (model.主要分類 != null)
         {
-            if (Enum.TryParse(model.主要分類, out MainCategory 主要分類))
+            if (!Enum.TryParse(model.主要分類, out MainCategory 主要分類))
             {
                 throw new AppException("主要分類 is not valid");
             }
@@ -93,7 +93,7 @@ public class WorkInfoService : IWorkInfoService
 
         if (model.次要分類 != null)
         {
-            if (Enum.TryParse(model.次要分類, out SubCategory 次要分類))
+            if (!Enum.TryParse(model.次要分類, out SubCategory 次要分類))
             {
                 throw new AppException("次要分類 is not valid");
             }
