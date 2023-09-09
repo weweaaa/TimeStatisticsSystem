@@ -5,7 +5,6 @@ namespace TimeStatisticsSystem.Entities;
 /// </summary>
 public enum MainCategory
 {
-    中心,
-    附加,
-    社會
+    工作,
+    休息
 }

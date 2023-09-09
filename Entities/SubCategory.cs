@@ -5,6 +5,10 @@ namespace TimeStatisticsSystem.Entities;
 /// </summary>
 public enum SubCategory
 {
+    中心,
+    附加,
+    社會,
+
     飲食,
     技術,
     睡眠,

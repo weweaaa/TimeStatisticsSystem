@@ -1,10 +1,27 @@
+using TimeStatisticsSystem.Helpers;
+using TimeStatisticsSystem.Repositories;
+using TimeStatisticsSystem.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// add services to DI container
+{
+    builder.Services.AddSingleton<DataContext>();
+    builder.Services.AddControllersWithViews();
 
-builder.Services.AddControllersWithViews();
+    // configure DI for application services
+    builder.Services.AddScoped<IDayWorkRepository, DayWorkRepository>();
+    builder.Services.AddScoped<IWorkInfoService, WorkInfoService>();
+}
 
 var app = builder.Build();
+
+// ensure database and tables exist
+{
+    using var scope = app.Services.CreateScope();
+    var context = scope.ServiceProvider.GetRequiredService<DataContext>();
+    await context.Init();
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
