@@ -30,7 +30,28 @@ public class DayWorkController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
     {
-        var user = await _workInfoService.GetById(id);
-        return Ok(user);
+        var workInfo = await _workInfoService.GetById(id);
+        return Ok(workInfo);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create(CreateWorkDayRequest model)
+    {
+        await _workInfoService.Create(model);
+        return Ok(new { message = "workInfo created" });
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(int id, UpdateWorkDayRequest model)
+    {
+        await _workInfoService.Update(id, model);
+        return Ok(new { message = "workInfo updated" });
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        await _workInfoService.Delete(id);
+        return Ok(new { message = "workInfo deleted" });
     }
 }

@@ -3,7 +3,7 @@ namespace TimeStatisticsSystem.Models.DayWork;
 using System.ComponentModel.DataAnnotations;
 using TimeStatisticsSystem.Entities;
 
-public class UpdateRequest
+public class UpdateWorkDayRequest
 {
     public string? 日期 { get; set; } 
     public string? 開始時間 { get; set; }
