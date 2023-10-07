@@ -19,5 +19,7 @@ public enum SubCategory
     放空,
     投資,
     感情,
-    閱讀
+    閱讀,
+    娛樂,
+    通勤,
 }
