@@ -1,0 +1,30 @@
+<h1 id="tableLabel">時間統計分析 (每日)</h1>
+
+<p>每天的時間記錄表</p>
+
+<p *ngIf="!dayWorkDatas?.length"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="dayWorkDatas.length">
+  <thead>
+    <tr>
+      <th>日期</th>
+      <th>開始時間</th>
+      <th>主要分類</th>
+      <th>次要分類</th>
+      <th>備註</th>
+      <th>花費時間</th>
+      <th>起始結束</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dayWorkData of dayWorkDatas">
+      <td>{{ dayWorkData['日期'] }}</td>
+      <td>{{ dayWorkData['開始時間'] }}</td>
+      <td>{{ dayWorkData['主要分類'] }}</td>
+      <td>{{ dayWorkData['次要分類'] }}</td>
+      <td>{{ dayWorkData['備註'] }}</td>
+      <td>{{ dayWorkData['花費時間'] }}</td>
+      <td>{{ dayWorkData['起始結束'] }}</td>
+    </tr>
+  </tbody>
+</table>
