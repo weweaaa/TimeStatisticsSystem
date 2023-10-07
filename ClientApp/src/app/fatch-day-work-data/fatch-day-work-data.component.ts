@@ -3,8 +3,8 @@ import { Component, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-fatch-day-work-data',
-  templateUrl: './fatch-day-work-data.component.html',
-  styleUrls: ['./fatch-day-work-data.component.css']
+  templateUrl: './fatch-day-work-data.component.html' //,
+  // styleUrls: ['./fatch-day-work-data.component.css']
 })
 export class FatchDayWorkDataComponent {
   public dayWorkDatas: DayWorkResponse[] = [];
