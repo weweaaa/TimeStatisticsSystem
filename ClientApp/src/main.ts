@@ -1,10 +1,19 @@
 /// <reference types="@angular/localize" />
 
-import { enableProdMode } from '@angular/core';
+import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { AppModule } from './app/app.module';
+
 import { environment } from './environments/environment';
+import { AppComponent } from './app/app.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FatchDayWorkDataComponent } from './app/fatch-day-work-data/fatch-day-work-data.component';
+import { CounterComponent } from './app/counter/counter.component';
+import { HomeComponent } from './app/home/home.component';
+import { provideRouter } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { withInterceptorsFromDi, provideHttpClient } from '@angular/common/http';
+import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 
 export function getBaseUrl() {
   return document.getElementsByTagName('base')[0].href;
@@ -16,6 +25,15 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic(providers)
-  .bootstrapModule(AppModule)
+bootstrapApplication(AppComponent, {
+    providers: [
+        importProvidersFrom(BrowserModule, FormsModule, NgbModule),
+        provideHttpClient(withInterceptorsFromDi()),
+        provideRouter([
+            { path: '', component: HomeComponent, pathMatch: 'full' },
+            { path: 'counter', component: CounterComponent },
+            { path: 'fetch-data', component: FatchDayWorkDataComponent },
+        ]),
+    ]
+})
   .catch((err) => console.error(err));

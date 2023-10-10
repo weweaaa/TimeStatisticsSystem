@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
+import { NgIf, NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-fatch-day-work-data',
-  templateUrl: './fatch-day-work-data.component.html', //,
-  // styleUrls: ['./fatch-day-work-data.component.css']
+    selector: 'app-fatch-day-work-data',
+    templateUrl: './fatch-day-work-data.component.html',
+    standalone: true,
+    imports: [NgIf, NgFor],
 })
 export class FatchDayWorkDataComponent {
   public dayWorkDatas: DayWorkResponse[] = [];
