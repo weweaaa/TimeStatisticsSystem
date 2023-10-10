@@ -2,12 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import { NgIf, NgFor } from '@angular/common';
 import { getBaseUrl } from 'src/main';
+import { DayWorkResponse } from '../models/DayWorkResponse';
+import { DayWorkFormsComponent } from '../day-work-forms/day-work-forms.component';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-fatch-day-work-data',
   templateUrl: './fatch-day-work-data.component.html',
   standalone: true,
-  imports: [NgIf, NgFor],
+  imports: [NgIf, NgFor, MatDialogModule],
   providers: [
     HttpClient,
     { provide: 'BASE_URL', useFactory: getBaseUrl, deps: [] },
@@ -16,7 +19,7 @@ import { getBaseUrl } from 'src/main';
 export class FatchDayWorkDataComponent {
   public dayWorkDatas: DayWorkResponse[] = [];
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, public dialog: MatDialog) {
     http.get<DayWorkResponse[]>(baseUrl + 'DayWork').subscribe(
       (result) => {
         this.dayWorkDatas = result;
@@ -24,14 +27,14 @@ export class FatchDayWorkDataComponent {
       (error) => console.error(error),
     );
   }
-}
 
-interface DayWorkResponse {
-  日期: string;
-  開始時間: string;
-  主要分類: string;
-  次要分類: string;
-  備註: string;
-  花費時間: 0;
-  起始結束: string;
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DayWorkFormsComponent, {
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 }
