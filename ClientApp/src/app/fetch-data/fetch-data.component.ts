@@ -3,10 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { NgIf, NgFor } from '@angular/common';
 
 @Component({
-    selector: 'app-fetch-data',
-    templateUrl: './fetch-data.component.html',
-    standalone: true,
-    imports: [NgIf, NgFor],
+  selector: 'app-fetch-data',
+  templateUrl: './fetch-data.component.html',
+  standalone: true,
+  imports: [NgIf, NgFor],
 })
 export class FetchDataComponent {
   public forecasts: WeatherForecast[] = [];

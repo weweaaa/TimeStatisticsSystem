@@ -3,7 +3,6 @@
 import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-
 import { environment } from './environments/environment';
 import { AppComponent } from './app/app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -12,7 +11,10 @@ import { CounterComponent } from './app/counter/counter.component';
 import { HomeComponent } from './app/home/home.component';
 import { provideRouter } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { withInterceptorsFromDi, provideHttpClient } from '@angular/common/http';
+import {
+  withInterceptorsFromDi,
+  provideHttpClient,
+} from '@angular/common/http';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 
 export function getBaseUrl() {
@@ -26,14 +28,13 @@ if (environment.production) {
 }
 
 bootstrapApplication(AppComponent, {
-    providers: [
-        importProvidersFrom(BrowserModule, FormsModule, NgbModule),
-        provideHttpClient(withInterceptorsFromDi()),
-        provideRouter([
-            { path: '', component: HomeComponent, pathMatch: 'full' },
-            { path: 'counter', component: CounterComponent },
-            { path: 'fetch-data', component: FatchDayWorkDataComponent },
-        ]),
-    ]
-})
-  .catch((err) => console.error(err));
+  providers: [
+    importProvidersFrom(BrowserModule, FormsModule, NgbModule),
+    provideHttpClient(withInterceptorsFromDi()),
+    provideRouter([
+      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'counter', component: CounterComponent },
+      { path: 'fetch-data', component: FatchDayWorkDataComponent },
+    ]),
+  ],
+}).catch((err) => console.error(err));

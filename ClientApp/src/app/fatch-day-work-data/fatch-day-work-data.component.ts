@@ -4,14 +4,14 @@ import { NgIf, NgFor } from '@angular/common';
 import { getBaseUrl } from 'src/main';
 
 @Component({
-    selector: 'app-fatch-day-work-data',
-    templateUrl: './fatch-day-work-data.component.html',
-    standalone: true,
-    imports: [NgIf, NgFor],
-    providers: [
-        HttpClient,
-        { provide: 'BASE_URL', useFactory: getBaseUrl, deps: [] },
-    ],
+  selector: 'app-fatch-day-work-data',
+  templateUrl: './fatch-day-work-data.component.html',
+  standalone: true,
+  imports: [NgIf, NgFor],
+  providers: [
+    HttpClient,
+    { provide: 'BASE_URL', useFactory: getBaseUrl, deps: [] },
+  ],
 })
 export class FatchDayWorkDataComponent {
   public dayWorkDatas: DayWorkResponse[] = [];
