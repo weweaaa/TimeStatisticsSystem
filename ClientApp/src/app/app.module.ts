@@ -19,7 +19,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    FatchDayWorkDataComponent
+    FatchDayWorkDataComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,9 +30,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FatchDayWorkDataComponent },
     ]),
-    NgbModule
+    NgbModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
