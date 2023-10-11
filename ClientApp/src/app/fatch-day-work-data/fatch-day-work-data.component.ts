@@ -4,7 +4,7 @@ import { NgIf, NgFor } from '@angular/common';
 import { getBaseUrl } from 'src/main';
 import { DayWorkResponse } from '../models/DayWorkResponse';
 import { DayWorkFormsComponent } from '../day-work-forms/day-work-forms.component';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-fatch-day-work-data',
@@ -33,7 +33,7 @@ export class FatchDayWorkDataComponent {
       data: {}
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(() => {
       console.log('The dialog was closed');
     });
   }
