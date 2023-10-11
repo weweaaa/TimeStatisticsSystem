@@ -7,8 +7,8 @@
       <mat-option *ngFor="let food of foods" [value]="food.value">
         {{food.viewValue}}
       </mat-option>
-    </mat-select> -->
-      <!-- <input matInput [(ngModel)]="dayWorkData.備註"> -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="dayWorkData['備註']">
     </mat-form-field>
   </div>
   <div mat-dialog-actions>
