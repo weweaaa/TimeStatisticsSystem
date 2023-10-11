@@ -1,6 +1,7 @@
 export enum SubCategory
 {
-    中心,
+    請選擇 = -1,
+    中心 = 0,
     附加,
     社會,
 

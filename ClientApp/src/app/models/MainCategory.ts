@@ -1,5 +1,6 @@
 export enum MainCategory
 {
-    工作,
-    休息
+    請選擇 = -1,
+    工作 = 0,
+    休息 = 1,
 }

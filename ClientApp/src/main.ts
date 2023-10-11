@@ -17,6 +17,7 @@ import {
 } from '@angular/common/http';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 export function getBaseUrl() {
   return document.getElementsByTagName('base')[0].href;
@@ -28,7 +29,7 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(BrowserModule, BrowserAnimationsModule, FormsModule, NgbModule),
+    importProvidersFrom(BrowserModule, BrowserAnimationsModule, FormsModule, MatMomentDateModule, NgbModule),
     provideHttpClient(withInterceptorsFromDi()),
     provideRouter([
       { path: '', component: HomeComponent, pathMatch: 'full' },

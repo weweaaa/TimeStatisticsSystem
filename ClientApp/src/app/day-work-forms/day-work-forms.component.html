@@ -2,17 +2,38 @@
   <h1 mat-dialog-title>每日時間紀錄作業</h1>
   <div mat-dialog-content>
     <p>請填寫以下表單內容</p>
+
     <mat-form-field>
-      <!-- <mat-select>
-      <mat-option *ngFor="let food of foods" [value]="food.value">
-        {{food.viewValue}}
-      </mat-option>
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select>
+        <mat-option *ngFor="let mainC of mainCategory_enum | keyvalue" [value]="dayWorkData['主要分類']">
+          {{ mainC.key }} - {{ mainC.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select>
+        <mat-option *ngFor="let subC of subCategory_enum | keyvalue" [value]="dayWorkData['次要分類']">
+          {{ subC.key }} - {{ subC.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
     <mat-form-field>
       <input matInput [(ngModel)]="dayWorkData['備註']">
     </mat-form-field>
+
   </div>
   <div mat-dialog-actions>
     <!-- <button mat-button (click)="onNoClick()">No Thanks</button> -->
-    <!-- <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button> -->
+    <button mat-button [mat-dialog-close]="false" cdkFocusInitial>Ok</button>
   </div>
 </div>
